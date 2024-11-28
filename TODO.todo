@@ -1,0 +1,76 @@
+[API a utilizar](https://uasdapi.ia3x.com/swagger/index.html)
+
+1 - Pagina principal
+[] - Al abrir la aplicación, se mostrará una pantalla con información sobre la UASD como:
+    [] - misión
+    [] - visión
+    [] - valores
+    [] - imágenes o videos representativos de la institución
+[] - Botón que lleva a la vista de acceso
+
+2 - Acceso
+[] - Crear formulario de acceso | El usuario debe poder ingresar:
+    [] - Usuario
+    [] - Contraseña
+[] - Link que lleva a la vista de recuperación de contraseña
+[] - Link que lleva a la vista de inscripción | Debe decir:
+    [] - Estudia con Nosotros
+[] - Botón de acceso
+
+2.1 - Inscripción
+[] - Crear formulario para inscripción | El usuario debe poder ingresar:
+    [] - Usuario
+    [] - Contraseña
+    [] - Confirmación de contraseña
+[] - Link que lleva a la vista de acceso
+
+2.2 - Recuperación de Cuenta
+[] - Crear formulario para recuperar la cuenta | El usuario debe poder ingresar:
+    [] - 
+[] - Link que lleva a la vista de acceso
+
+3 - Menu principal
+[] - Sección 1 | Noticias
+    [] - Mostrar las ultimas noticias de la UASD
+[] - Sección 2 | Mis Materias
+    [] - Muestra una lista de asignaturas | Los elementos de la lista contienen:
+        [] - Nombre de la asignatura
+        [] - Hora de la asignatura
+        [] - Aula de la asignatura
+    [] - Al hacer click en una asignatura se muestra la ubicación del aula en un mapa
+[] - Sección 3 | Preselección
+    [] - Muestra una lista de asignaturas a preseleccionar | Los elementos de la lista contienen:
+        [] - Nombre de la asignatura
+        [] - Horario de la asignatura
+        [] - Aula de la asignatura
+[] - Sección 4 | Deuda
+    [] - Estado de deuda con la universidad
+    [] - Link para pago en linea | Redirige a una pagina web para realizar el pago
+[] - Sección 5 | Solicitudes
+    [] - Formulario de solicitudes administrativas
+    [] - Lista de solicitudes realizadas | Los elementos de la lista contienen:
+        [] - Estado actual de la solicitud
+        [] - Respuesta de la solicitud
+    [] - Notificaciones sobre el cambio del estado de las solicitudes
+[] - Sección 6 | Mis Tareas
+    [] - Recordatorios para tareas próximas a vencer | Los recordatorios contienen:
+        [] - Nombre de la tarea
+        [] - Fecha de finalización de entrega
+        [] - Asignatura
+    [] - Enlace al aula virtual (por ejemplo, Moodle o plataforma designada)
+[] - Sección 7 | Eventos
+    [] - Lista de eventos de la UASD | Los elementos de la lista contienen:
+        [] - Fecha del evento
+        [] - Lugar del evento
+        [] - Descripción del evento
+    [] - Al seleccionar un evento se muestra su contenido
+[] - Sección 8 | Videos
+    [] - Muestra videos relacionados con la institución y recursos educativos
+[] - Sección 9 | Acerca De
+    [] - Lista de desarrolladores | Los elementos de la lista contienen:
+        [] - Nombre del desarrollador
+        [] - Matricula del desarrollador
+        [] - Foto del desarrollador
+        [] - Mensaje o biografía breve del desarrollador
+[] - Sección 10 | Salir
+    [] - Opción para que el usuario cierre la sesión

@@ -1,25 +1,25 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
-import './Home.css';
 
-const Home: React.FC = () => {
+const Recuperacion: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+          <IonTitle>Recuperación</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
+            <IonTitle size="large">Recuperación</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer />
+        <div className="ion-padding">
+          <h1>Recuperación</h1>
+        </div>
       </IonContent>
     </IonPage>
   );
 };
 
-export default Home;
+export default Recuperacion;
