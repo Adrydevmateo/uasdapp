@@ -38,23 +38,30 @@ import PaginaPrincipal from './pages/pagina-principal/PaginaPrincipal.page';
 
 setupIonicReact();
 
+export enum ERutas {
+  PAGINA_PRINCIPAL = "/pagina-principal",
+  ACCESO = "/acceso",
+  INSCRIPCION = "/inscripcion",
+  MENU_PRINCIPAL = "/menu-principal"
+}
+
 const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route exact path="/pagina-principal">
+        <Route exact path={ERutas.PAGINA_PRINCIPAL}>
           <PaginaPrincipal />
         </Route>
         <Route exact path="/">
-          <Redirect to="/pagina-principal" />
+          <Redirect to={ERutas.PAGINA_PRINCIPAL} />
         </Route>
-        <Route exact path="/acceso">
+        <Route exact path={ERutas.ACCESO}>
           <Acceso />
         </Route>
-        <Route exact path="/inscripcion">
+        <Route exact path={ERutas.INSCRIPCION}>
           <Inscripcion />
         </Route>
-        <Route exact path="/menu-principal">
+        <Route exact path={ERutas.MENU_PRINCIPAL}>
           <MenuPrincipal />
         </Route>
       </IonRouterOutlet>
