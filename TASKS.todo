@@ -36,16 +36,16 @@
 [] - Sección 1 | Noticias
     [] - Mostrar las ultimas noticias de la UASD
 [] - Sección 2 | Mis Materias
-    [x] - Muestra una lista de asignaturas | Los elementos de la lista contienen:
-        [x] - Nombre de la asignatura
-        [x] - Horario de la asignatura
-        [x] - Aula de la asignatura
-    [] - Al hacer click en una asignatura se muestra la ubicación del aula en un mapa
-[] - Sección 3 | Preselección
-    [] - Muestra una lista de asignaturas a preseleccionar | Los elementos de la lista contienen:
-        [] - Nombre de la asignatura
-        [] - Horario de la asignatura
-        [] - Aula de la asignatura
+    [x] - Muestra una lista de materias | Los elementos de la lista contienen:
+        [x] - Nombre de la materia
+        [x] - Horario de la materia
+        [x] - Aula de la materia
+    [] - Al hacer click en una materia se muestra la ubicación del aula en un mapa
+[x] - Sección 3 | Preselección
+    [x] - Muestra una lista de materias a preseleccionar | Los elementos de la lista contienen:
+        [x] - Nombre de la materia
+        [x] - Horario de la materia
+        [x] - Aula de la materia
 [] - Sección 4 | Deudas
     [] - Estado de deudas con la universidad
     [] - Link para pago en linea | Redirige a una pagina web para realizar el pago
