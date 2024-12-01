@@ -36,10 +36,10 @@
 [] - Sección 1 | Noticias
     [] - Mostrar las ultimas noticias de la UASD
 [] - Sección 2 | Mis Materias
-    [] - Muestra una lista de asignaturas | Los elementos de la lista contienen:
-        [] - Nombre de la asignatura
-        [] - Hora de la asignatura
-        [] - Aula de la asignatura
+    [x] - Muestra una lista de asignaturas | Los elementos de la lista contienen:
+        [x] - Nombre de la asignatura
+        [x] - Horario de la asignatura
+        [x] - Aula de la asignatura
     [] - Al hacer click en una asignatura se muestra la ubicación del aula en un mapa
 [] - Sección 3 | Preselección
     [] - Muestra una lista de asignaturas a preseleccionar | Los elementos de la lista contienen:
