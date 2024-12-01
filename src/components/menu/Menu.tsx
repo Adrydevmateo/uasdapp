@@ -20,8 +20,8 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+          <IonListHeader>UASD</IonListHeader>
+          <br />
           {routes.map((item) => {
             return (
               <IonMenuToggle key={item.url} autoHide={false}>
