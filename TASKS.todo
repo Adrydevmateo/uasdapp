@@ -61,12 +61,12 @@
         [] - Fecha de finalización de entrega
         [] - Asignatura
     [] - Enlace al aula virtual (por ejemplo, Moodle o plataforma designada)
-[] - Sección 7 | Eventos
-    [] - Lista de eventos de la UASD | Los elementos de la lista contienen:
-        [] - Fecha del evento
-        [] - Lugar del evento
-        [] - Descripción del evento
-    [] - Al seleccionar un evento se muestra su contenido
+[x] - Sección 7 | Eventos
+    [x] - Lista de eventos de la UASD | Los elementos de la lista contienen:
+        [x] - Fecha del evento
+        [x] - Lugar del evento
+        [x] - Descripción del evento
+    [x] - Al seleccionar un evento se muestra su contenido
 [x] - Sección 8 | Videos
     [x] - Muestra videos relacionados con la institución y recursos educativos
 [x] - Sección 9 | Acerca De
