@@ -9,13 +9,13 @@
 [x] - Botón que lleva a la vista de acceso
 
 2 - Acceso
-[] - Crear formulario de acceso | El usuario debe poder ingresar:
-    [] - Usuario
-    [] - Contraseña
-[] - Link que lleva a la vista de recuperación de contraseña
-[] - Link que lleva a la vista de inscripción | Debe decir:
-    [] - Estudia con Nosotros
-[] - Botón de acceso
+[x] - Crear formulario de acceso | El usuario debe poder ingresar:
+    [x] - Usuario
+    [x] - Contraseña
+[x] - Link que lleva a la vista de recuperación de contraseña
+[x] - Link que lleva a la vista de inscripción | Debe decir:
+    [x] - Estudia con Nosotros
+[x] - Botón de acceso
 
 2.1 - Inscripción
 [] - Crear formulario para inscripción | El usuario debe poder ingresar:
