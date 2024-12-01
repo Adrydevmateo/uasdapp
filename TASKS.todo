@@ -69,11 +69,11 @@
     [] - Al seleccionar un evento se muestra su contenido
 [] - Sección 8 | Videos
     [] - Muestra videos relacionados con la institución y recursos educativos
-[] - Sección 9 | Acerca De
-    [] - Lista de desarrolladores | Los elementos de la lista contienen:
-        [] - Nombre del desarrollador
-        [] - Matricula del desarrollador
-        [] - Foto del desarrollador
-        [] - Mensaje o biografía breve del desarrollador
+[x] - Sección 9 | Acerca De
+    [x] - Lista de desarrolladores | Los elementos de la lista contienen:
+        [x] - Nombre del desarrollador
+        [x] - Matricula del desarrollador
+        [x] - Foto del desarrollador
+        [x] - Mensaje o biografía breve del desarrollador
 [x] - Sección 10 | Salir
     [x] - Opción para que el usuario cierre la sesión
