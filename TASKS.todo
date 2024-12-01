@@ -26,8 +26,8 @@
 [x] - Botón de inscripción
 
 2.2 - Recuperación de Cuenta
-[] - Crear formulario para recuperar la cuenta | El usuario debe poder ingresar:
-    [] - 
+[x] - Crear formulario para recuperar la cuenta | El usuario debe poder ingresar:
+    [x] - email
 [x] - Link que lleva a la vista de acceso
 [x] - Link que lleva a la vista de inscripcion
 [x] - Botón de recuperacion
