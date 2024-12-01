@@ -4,16 +4,16 @@ export enum Routes {
     INSCRIPCION = "/inscripcion",
     RECUPERACION = "/recuperacion",
     MENU = "/menu",
-    NOTICIAS = "/menu/noticias",
-    MATERIAS = "/menu/materias",
-    PRESELECCION = "/menu/preseleccion",
-    DEUDA = "/menu/deuda",
-    SOLICITUDES = "/menu/deudas",
-    TAREAS = "/menu/tareas",
-    EVENTOS = "/menu/eventos",
-    VIDEOS = "/menu/videos",
-    ACERCA = "/menu/acerca-de",
-    SALIR = "/menu/salir"
+    NOTICIAS = "/noticias",
+    MATERIAS = "/materias",
+    PRESELECCION = "/preseleccion",
+    DEUDA = "/deudas",
+    SOLICITUDES = "/solicitudes",
+    TAREAS = "/tareas",
+    EVENTOS = "/eventos",
+    VIDEOS = "/videos",
+    ACERCA = "/acerca-de",
+    SALIR = "/salir"
 }
 
 export interface Route {

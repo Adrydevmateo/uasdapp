@@ -57,7 +57,7 @@ export const routes: Array<Route> = [
         page: Preseleccion
     },
     {
-        title: "Deuda",
+        title: "Deudas",
         url: Routes.DEUDA,
         page: Deudas
     },
