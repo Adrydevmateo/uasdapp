@@ -67,8 +67,8 @@
         [] - Lugar del evento
         [] - Descripción del evento
     [] - Al seleccionar un evento se muestra su contenido
-[] - Sección 8 | Videos
-    [] - Muestra videos relacionados con la institución y recursos educativos
+[x] - Sección 8 | Videos
+    [x] - Muestra videos relacionados con la institución y recursos educativos
 [x] - Sección 9 | Acerca De
     [x] - Lista de desarrolladores | Los elementos de la lista contienen:
         [x] - Nombre del desarrollador
