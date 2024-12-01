@@ -75,5 +75,5 @@
         [] - Matricula del desarrollador
         [] - Foto del desarrollador
         [] - Mensaje o biografía breve del desarrollador
-[] - Sección 10 | Salir
-    [] - Opción para que el usuario cierre la sesión
+[x] - Sección 10 | Salir
+    [x] - Opción para que el usuario cierre la sesión

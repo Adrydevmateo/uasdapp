@@ -1,6 +1,15 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
+import { Routes } from '../../router/types';
 
 const Salir: React.FC = () => {
+
+  const router = useIonRouter();
+  const navegar = () => router.push(Routes.ACCESO)
+  
+  const salir = () => {
+    
+    navegar()
+  }
 
   return (
     <IonPage>
@@ -20,7 +29,9 @@ const Salir: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <div className='ion-padding'>
-          <h1>Salir</h1>
+          <IonButton onClick={salir} expand='full' style={{ margin: "5px", height: "60px" }}>
+            Cerrar Sesion
+          </IonButton>
         </div>
       </IonContent>
     </IonPage>
