@@ -1,12 +1,12 @@
 [API a utilizar](https://uasdapi.ia3x.com/swagger/index.html)
 
 1 - Pagina principal | Adry Mateo Ramon
-[] - Al abrir la aplicación, se mostrará una pantalla con información sobre la UASD como:
-    [] - misión
-    [] - visión
-    [] - valores
-    [] - imágenes o videos representativos de la institución
-[] - Botón que lleva a la vista de acceso
+[x] - Al abrir la aplicación, se mostrará una pantalla con información sobre la UASD como:
+    [x] - misión
+    [x] - visión
+    [x] - valores
+    [x] - imágenes o videos representativos de la institución
+[x] - Botón que lleva a la vista de acceso
 
 2 - Acceso
 [] - Crear formulario de acceso | El usuario debe poder ingresar:
