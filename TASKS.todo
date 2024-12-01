@@ -28,7 +28,9 @@
 2.2 - Recuperación de Cuenta
 [] - Crear formulario para recuperar la cuenta | El usuario debe poder ingresar:
     [] - 
-[] - Link que lleva a la vista de acceso
+[x] - Link que lleva a la vista de acceso
+[x] - Link que lleva a la vista de inscripcion
+[x] - Botón de recuperacion
 
 3 - Menu principal
 [] - Sección 1 | Noticias
