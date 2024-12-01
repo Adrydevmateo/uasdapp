@@ -19,10 +19,11 @@
 
 2.1 - Inscripción
 [] - Crear formulario para inscripción | El usuario debe poder ingresar:
-    [] - Usuario
-    [] - Contraseña
+    [x] - Usuario
+    [x] - Contraseña
     [] - Confirmación de contraseña
-[] - Link que lleva a la vista de acceso
+[x] - Link que lleva a la vista de acceso
+[x] - Botón de inscripción
 
 2.2 - Recuperación de Cuenta
 [] - Crear formulario para recuperar la cuenta | El usuario debe poder ingresar:
