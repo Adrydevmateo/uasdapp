@@ -1,6 +1,7 @@
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
+import { Redirect, Route } from 'react-router-dom';
+import Menu from './components/menu/Menu';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -31,42 +32,31 @@ import '@ionic/react/css/palettes/dark.system.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import Acceso from './pages/acceso/Acceso.page';
-import Inscripcion from './pages/acceso/Inscripcion.page';
-import MenuPrincipal from './pages/menu-principal/MenuPrincipal.page';
-import PaginaPrincipal from './pages/pagina-principal/PaginaPrincipal.page';
+import { routes } from './router';
+import { Routes } from './router/types';
 
 setupIonicReact();
 
-export enum ERutas {
-  PAGINA_PRINCIPAL = "/pagina-principal",
-  ACCESO = "/acceso",
-  INSCRIPCION = "/inscripcion",
-  MENU_PRINCIPAL = "/menu-principal"
-}
-
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path={ERutas.PAGINA_PRINCIPAL}>
-          <PaginaPrincipal />
-        </Route>
-        <Route exact path="/">
-          <Redirect to={ERutas.PAGINA_PRINCIPAL} />
-        </Route>
-        <Route exact path={ERutas.ACCESO}>
-          <Acceso />
-        </Route>
-        <Route exact path={ERutas.INSCRIPCION}>
-          <Inscripcion />
-        </Route>
-        <Route exact path={ERutas.MENU_PRINCIPAL}>
-          <MenuPrincipal />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
-  </IonApp>
-);
+const App: React.FC = () => {
+  return (
+    <IonApp>
+      <IonReactRouter>
+        <IonSplitPane contentId="main">
+          <Menu />
+          <IonRouterOutlet id="main">
+            <Route path="/" exact={true}>
+              <Redirect to={Routes.PRINCIPAL} />
+            </Route>
+            {routes.map((route) => (
+              <Route path={route.url} key={route.url}>
+                <route.page />
+              </Route>
+            ))}
+          </IonRouterOutlet>
+        </IonSplitPane>
+      </IonReactRouter>
+    </IonApp>
+  );
+};
 
 export default App;

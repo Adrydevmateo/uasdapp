@@ -7,8 +7,3 @@ export interface Usuario {
     email: string,
     authToken: string
 }
-
-export interface FormResetPassword {
-    usuario: string,
-    email: string
-}

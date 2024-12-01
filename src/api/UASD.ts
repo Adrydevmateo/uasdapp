@@ -1,4 +1,4 @@
-import { Usuario } from "../pages/acceso/Acceso"
+import { Usuario } from "./types";
 
 const url = "https://uasdapi.ia3x.com/"
 
