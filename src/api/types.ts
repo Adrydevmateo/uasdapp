@@ -15,6 +15,14 @@ export interface Evento {
     fechaEvento: string,
     lugar: string,
     coordenadas: string
+}
+
+export interface Deuda {
+    "id": number,
+    "usuarioId": number,
+    "monto": number,
+    "pagada": boolean,
+    "fechaActualizacion": string
   }
 
 export interface CrearUsuarioRes {

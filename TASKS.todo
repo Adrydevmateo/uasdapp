@@ -46,9 +46,8 @@
         [x] - Nombre de la materia
         [x] - Horario de la materia
         [x] - Aula de la materia
-[] - Sección 4 | Deudas
-    [] - Estado de deudas con la universidad
-    [] - Link para pago en linea | Redirige a una pagina web para realizar el pago
+[x] - Sección 4 | Deudas
+    [x] - Estado de deudas con la universidad
 [x] - Sección 5 | Solicitudes
     [x] - Formulario de solicitudes administrativas
     [x] - Lista de solicitudes realizadas | Los elementos de la lista contienen:

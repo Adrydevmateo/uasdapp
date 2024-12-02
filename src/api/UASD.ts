@@ -1,5 +1,5 @@
 import { Preferences } from '@capacitor/preferences';
-import { APIRes, CrearUsuarioRes, Evento, IniciarSesionData, IniciarSesionRes, ObtenerNoticiasData, Usuario } from "./types";
+import { APIRes, CrearUsuarioRes, Deuda, Evento, IniciarSesionData, IniciarSesionRes, ObtenerNoticiasData, Usuario } from "./types";
 
 const url = "https://uasdapi.ia3x.com"
 
@@ -107,6 +107,33 @@ export async function obtenerEventos() {
         }
         
         const json = await res.json() as Array<Evento>
+        console.log("Data: ", json);
+        
+        return json
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function obtenerDeudas() {
+    try {
+        const { value: jwt } = await Preferences.get({ key: 'jwt' })
+        if(!jwt) {
+            throw new Error('User not authenticated')
+        }
+        
+        const res = await fetch('/api/deudas', {
+            headers: {
+                'accept': '*/*',
+                'Authorization': jwt
+            },
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+        
+        const json = await res.json() as Array<Deuda>
         console.log("Data: ", json);
         
         return json
