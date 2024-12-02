@@ -188,7 +188,7 @@ export async function obtenerMaterias() {
         }
 
         const json = await res.json() as Array<Materia>
-        console.log("Data: ", json);
+        console.log("Obtener materias: ", json);
 
         return json
     } catch (error) {
@@ -204,6 +204,38 @@ export async function preseleccionarMateria(codigo: string) {
         }
 
         const res = await fetch('/api/preseleccionar_materia', {
+            method: "POST",
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'application/json',
+                'Authorization': jwt
+            },
+            body: JSON.stringify(codigo),
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+
+        const json = await res.json()
+        console.log("@@ Res: ", json);
+
+        return {
+            aprobado: json.success,
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function cancelarPreseleccionMateria(codigo: string) {
+    try {
+        const { value: jwt } = await Preferences.get({ key: 'jwt' })
+        if (!jwt) {
+            throw new Error('User not authenticated')
+        }
+
+        const res = await fetch('/api/cancelar_preseleccion_materia', {
             method: "POST",
             headers: {
                 'accept': '*/*',
@@ -247,7 +279,7 @@ export async function obtenerPreseleccion() {
         }
 
         const json = await res.json()
-        console.log("Data: ", json);
+        console.log("Obtener Pre: ", json);
 
         return json.data
     } catch (error) {
