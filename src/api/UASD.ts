@@ -45,10 +45,10 @@ export async function iniciarSesion(usuario: Pick<Usuario, "username" | "passwor
         if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`)
         }
-        
+
         const json = await res.json() as APIRes<IniciarSesionData>
 
-        if(json.success) {
+        if (json.success) {
             await Preferences.set({ key: 'jwt', value: json.data.authToken });
         }
 
@@ -64,10 +64,10 @@ export async function iniciarSesion(usuario: Pick<Usuario, "username" | "passwor
 export async function obtenerNoticias() {
     try {
         const { value: jwt } = await Preferences.get({ key: 'jwt' })
-        if(!jwt) {
+        if (!jwt) {
             throw new Error('User not authenticated')
         }
-        
+
         const res = await fetch('/api/noticias', {
             headers: {
                 'accept': '*/*',
@@ -78,10 +78,10 @@ export async function obtenerNoticias() {
         if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`)
         }
-        
+
         const json = await res.json() as APIRes<Array<ObtenerNoticiasData>>
         console.log("Data: ", json);
-        
+
         return json.data
     } catch (error) {
         console.error('Error:', error);
@@ -91,10 +91,10 @@ export async function obtenerNoticias() {
 export async function obtenerEventos() {
     try {
         const { value: jwt } = await Preferences.get({ key: 'jwt' })
-        if(!jwt) {
+        if (!jwt) {
             throw new Error('User not authenticated')
         }
-        
+
         const res = await fetch('/api/eventos', {
             headers: {
                 'accept': '*/*',
@@ -105,10 +105,10 @@ export async function obtenerEventos() {
         if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`)
         }
-        
+
         const json = await res.json() as Array<Evento>
         console.log("Data: ", json);
-        
+
         return json
     } catch (error) {
         console.error('Error:', error);
@@ -118,10 +118,10 @@ export async function obtenerEventos() {
 export async function obtenerDeudas() {
     try {
         const { value: jwt } = await Preferences.get({ key: 'jwt' })
-        if(!jwt) {
+        if (!jwt) {
             throw new Error('User not authenticated')
         }
-        
+
         const res = await fetch('/api/deudas', {
             headers: {
                 'accept': '*/*',
@@ -132,10 +132,10 @@ export async function obtenerDeudas() {
         if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`)
         }
-        
+
         const json = await res.json() as Array<Deuda>
         console.log("Data: ", json);
-        
+
         return json
     } catch (error) {
         console.error('Error:', error);
@@ -145,10 +145,10 @@ export async function obtenerDeudas() {
 export async function obtenerVideos() {
     try {
         const { value: jwt } = await Preferences.get({ key: 'jwt' })
-        if(!jwt) {
+        if (!jwt) {
             throw new Error('User not authenticated')
         }
-        
+
         const res = await fetch('/api/videos', {
             headers: {
                 'accept': '*/*',
@@ -159,10 +159,10 @@ export async function obtenerVideos() {
         if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`)
         }
-        
-        const json = await res.json() as Array<{id: number, url: string}>
+
+        const json = await res.json() as Array<{ id: number, url: string }>
         console.log("Data: ", json);
-        
+
         return json
     } catch (error) {
         console.error('Error:', error);
@@ -172,10 +172,10 @@ export async function obtenerVideos() {
 export async function obtenerMaterias() {
     try {
         const { value: jwt } = await Preferences.get({ key: 'jwt' })
-        if(!jwt) {
+        if (!jwt) {
             throw new Error('User not authenticated')
         }
-        
+
         const res = await fetch('/api/materias_disponibles', {
             headers: {
                 'accept': '*/*',
@@ -186,11 +186,70 @@ export async function obtenerMaterias() {
         if (!res.ok) {
             throw new Error(`HTTP error! Status: ${res.status}`)
         }
-        
+
         const json = await res.json() as Array<Materia>
         console.log("Data: ", json);
-        
+
         return json
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function preseleccionarMateria(codigo: string) {
+    try {
+        const { value: jwt } = await Preferences.get({ key: 'jwt' })
+        if (!jwt) {
+            throw new Error('User not authenticated')
+        }
+
+        const res = await fetch('/api/preseleccionar_materia', {
+            method: "POST",
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'application/json',
+                'Authorization': jwt
+            },
+            body: JSON.stringify(codigo),
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+
+        const json = await res.json()
+        console.log("@@ Res: ", json);
+
+        return {
+            aprobado: json.success,
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function obtenerPreseleccion() {
+    try {
+        const { value: jwt } = await Preferences.get({ key: 'jwt' })
+        if (!jwt) {
+            throw new Error('User not authenticated')
+        }
+
+        const res = await fetch('/api/ver_preseleccion', {
+            headers: {
+                'accept': '*/*',
+                'Authorization': jwt
+            },
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+
+        const json = await res.json()
+        console.log("Data: ", json);
+
+        return json.data
     } catch (error) {
         console.error('Error:', error);
     }
