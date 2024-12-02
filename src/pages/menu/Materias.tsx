@@ -1,37 +1,18 @@
 import { IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Materia } from '../../api/types';
+import { obtenerMaterias } from '../../api/UASD';
 
 const Materias: React.FC = () => {
 
   const [activo, setActivo] = useState("")
+  const [materias, setMaterias] = useState<Array<Materia>>([])
 
-  const materias = [
-    {
-      nombre: "Nombre",
-      horario: "horario",
-      aula: "Aula 1",
-    },
-    {
-      nombre: "Nombre",
-      horario: "horario",
-      aula: "Aula 2",
-    },
-    {
-      nombre: "Nombre",
-      horario: "horario",
-      aula: "Aula 3",
-    },
-    {
-      nombre: "Nombre",
-      horario: "horario",
-      aula: "Aula 4",
-    },
-    {
-      nombre: "Nombre",
-      horario: "horario",
-      aula: "Aula 5",
-    }
-  ]
+  useEffect(() => {
+    obtenerMaterias().then((res) => {
+     setMaterias(res)
+    })
+   }, [])
 
   return (
     <IonPage>
@@ -51,15 +32,16 @@ const Materias: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <div className='ion-padding'>
-          {materias.map((materia, index) => (
-            <IonCard key={index} onClick={() => setActivo(`${materia.nombre}-${materia.horario}-${materia.aula}`)}>
+          {materias.map((materia) => (
+            <IonCard key={materia.codigo} onClick={() => setActivo(materia.codigo)}>
               <IonCardHeader>
                 <IonCardSubtitle>{materia.horario}</IonCardSubtitle>
                 <IonCardTitle>{materia.nombre}</IonCardTitle>
-                <IonCardSubtitle>{materia.aula}</IonCardSubtitle>
+                <IonCardSubtitle>Aula: {materia.aula}</IonCardSubtitle>
+                <IonCardSubtitle>Código: {materia.codigo}</IonCardSubtitle>
               </IonCardHeader>
               {
-                activo == `${materia.nombre}-${materia.horario}-${materia.aula}` ? (
+                activo == materia.codigo ? (
                   <IonCardContent>
                     <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/card-media.png" />
                   </IonCardContent>

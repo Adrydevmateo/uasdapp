@@ -23,6 +23,14 @@ export interface Deuda {
     "monto": number,
     "pagada": boolean,
     "fechaActualizacion": string
+}
+
+export interface Materia {
+    "codigo": string,
+    "nombre": string,
+    "horario": string,
+    "aula": string,
+    "ubicacion": string
   }
 
 export interface CrearUsuarioRes {
