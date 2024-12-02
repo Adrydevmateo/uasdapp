@@ -49,11 +49,11 @@
 [] - Sección 4 | Deudas
     [] - Estado de deudas con la universidad
     [] - Link para pago en linea | Redirige a una pagina web para realizar el pago
-[] - Sección 5 | Solicitudes
-    [] - Formulario de solicitudes administrativas
-    [] - Lista de solicitudes realizadas | Los elementos de la lista contienen:
-        [] - Estado actual de la solicitud
-        [] - Respuesta de la solicitud
+[x] - Sección 5 | Solicitudes
+    [x] - Formulario de solicitudes administrativas
+    [x] - Lista de solicitudes realizadas | Los elementos de la lista contienen:
+        [x] - Estado actual de la solicitud
+        [x] - Respuesta de la solicitud
     [] - Notificaciones sobre el cambio del estado de las solicitudes
 [] - Sección 6 | Mis Tareas
     [] - Recordatorios para tareas próximas a vencer | Los recordatorios contienen:
