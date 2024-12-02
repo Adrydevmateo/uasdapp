@@ -33,8 +33,8 @@
 [x] - Botón de recuperacion
 
 3 - Menu principal
-[] - Sección 1 | Noticias
-    [] - Mostrar las ultimas noticias de la UASD
+[x] - Sección 1 | Noticias
+    [x] - Mostrar las ultimas noticias de la UASD
 [] - Sección 2 | Mis Materias
     [x] - Muestra una lista de materias | Los elementos de la lista contienen:
         [x] - Nombre de la materia

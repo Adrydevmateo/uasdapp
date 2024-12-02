@@ -1,5 +1,5 @@
 import { Preferences } from '@capacitor/preferences';
-import { CrearUsuarioRes, IniciarSesionRes, Usuario } from "./types";
+import { APIRes, CrearUsuarioRes, IniciarSesionData, IniciarSesionRes, ObtenerNoticiasData, Usuario } from "./types";
 
 const url = "https://uasdapi.ia3x.com"
 
@@ -46,7 +46,7 @@ export async function iniciarSesion(usuario: Pick<Usuario, "username" | "passwor
             throw new Error(`HTTP error! Status: ${res.status}`)
         }
         
-        const json = await res.json() as IniciarSesionRes
+        const json = await res.json() as APIRes<IniciarSesionData>
 
         if(json.success) {
             await Preferences.set({ key: 'jwt', value: json.data.authToken });
@@ -56,6 +56,34 @@ export async function iniciarSesion(usuario: Pick<Usuario, "username" | "passwor
             aprobado: json.success,
             mensajeDeError: json.error
         }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function obtenerNoticias() {
+    try {
+        const { value: jwt } = await Preferences.get({ key: 'jwt' })
+        if(!jwt) {
+            throw new Error('User not authenticated')
+        }
+        console.log("JWT: ", jwt);
+        
+        const res = await fetch('/api/noticias', {
+            headers: {
+                'accept': '*/*',
+                'Authorization': jwt
+            },
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+        
+        const json = await res.json() as APIRes<Array<ObtenerNoticiasData>>
+        console.log("Data: ", json);
+        
+        return json.data
     } catch (error) {
         console.error('Error:', error);
     }
