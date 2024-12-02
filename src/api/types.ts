@@ -8,9 +8,18 @@ export interface Usuario {
     authToken: string
 }
 
+export interface Evento {
+    id: number,
+    titulo: string,
+    descripcion: string,
+    fechaEvento: string,
+    lugar: string,
+    coordenadas: string
+  }
+
 export interface CrearUsuarioRes {
     success: true,
-    message: "Usuario creado exitosamente",
+    message: string,
     data: null,
     error: null
 }
@@ -33,9 +42,9 @@ export interface IniciarSesionData {
 }
 
 export interface ObtenerNoticiasData {
-    id: "20680",
-    title: "Inauguran torneo Interinstitucional de Softbol NAVI-UASD",
-    img: "https://uasd.edu.do/wp-content/uploads/RECONNOCIMIENTO.jpg",
-    url: "https://uasd.edu.do/inauguran-torneo-interinstitucional-de-softbol-navi-uasd/",
-    date: "diciembre 2, 2024"
+    id: number,
+    title: string,
+    img: string,
+    url: string,
+    date: string
 }

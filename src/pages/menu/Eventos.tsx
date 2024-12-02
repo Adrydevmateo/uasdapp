@@ -1,23 +1,16 @@
 import { IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { obtenerEventos } from '../../api/UASD';
 
 const Eventos: React.FC = () => {
   const [activado, setActivado] = useState("")
+  const [eventos, setEventos] = useState([])
 
-  const eventos = [
-    {
-      id: "primer",
-      fecha: "Fecha",
-      lugar: "Lugar",
-      descripcion: "Descripcion"
-    },
-    {
-      id: "segundo",
-      fecha: "Fecha",
-      lugar: "Lugar",
-      descripcion: "Descripcion"
-    }
-  ]
+  useEffect(() => {
+   obtenerEventos().then((res) => {
+    setEventos(res)
+   })
+  }, [])
 
   return (
     <IonPage>
@@ -40,7 +33,8 @@ const Eventos: React.FC = () => {
           {eventos.map(evento => (
             <IonCard key={evento.id} onClick={() => setActivado(evento.id)}>
               <IonCardHeader>
-                <IonCardSubtitle>{evento.fecha}</IonCardSubtitle>
+                <IonCardSubtitle>{new Date(evento.fechaEvento).toLocaleDateString()}</IonCardSubtitle>
+                <IonCardTitle>{evento.titulo}</IonCardTitle>
                 <IonCardTitle>{evento.lugar}</IonCardTitle>
               </IonCardHeader>
               {activado == evento.id ? (

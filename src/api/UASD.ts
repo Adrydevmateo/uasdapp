@@ -1,5 +1,5 @@
 import { Preferences } from '@capacitor/preferences';
-import { APIRes, CrearUsuarioRes, IniciarSesionData, IniciarSesionRes, ObtenerNoticiasData, Usuario } from "./types";
+import { APIRes, CrearUsuarioRes, Evento, IniciarSesionData, IniciarSesionRes, ObtenerNoticiasData, Usuario } from "./types";
 
 const url = "https://uasdapi.ia3x.com"
 
@@ -67,7 +67,6 @@ export async function obtenerNoticias() {
         if(!jwt) {
             throw new Error('User not authenticated')
         }
-        console.log("JWT: ", jwt);
         
         const res = await fetch('/api/noticias', {
             headers: {
@@ -84,6 +83,33 @@ export async function obtenerNoticias() {
         console.log("Data: ", json);
         
         return json.data
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function obtenerEventos() {
+    try {
+        const { value: jwt } = await Preferences.get({ key: 'jwt' })
+        if(!jwt) {
+            throw new Error('User not authenticated')
+        }
+        
+        const res = await fetch('/api/eventos', {
+            headers: {
+                'accept': '*/*',
+                'Authorization': jwt
+            },
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+        
+        const json = await res.json() as Array<Evento>
+        console.log("Data: ", json);
+        
+        return json
     } catch (error) {
         console.error('Error:', error);
     }
