@@ -19,5 +19,6 @@ export enum Routes {
 export interface Route {
     title: string,
     url: Routes,
-    page: any
+    page: any,
+    requiresAuth: boolean
 }

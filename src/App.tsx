@@ -34,6 +34,7 @@ import '@ionic/react/css/palettes/dark.system.css';
 import './theme/variables.css';
 import { routes } from './router';
 import { Routes } from './router/types';
+import PrivateRoute from './router/PrivateRoute';
 
 setupIonicReact();
 
@@ -51,11 +52,19 @@ const App: React.FC = () => {
             <Route path="/" exact={true}>
               <Redirect to={Routes.PRINCIPAL} />
             </Route>
-            {routes.map((route) => (
-              <Route path={route.url} key={route.url}>
-                <route.page />
-              </Route>
-            ))}
+            {routes.map((route) =>
+              route.requiresAuth ? (
+                <PrivateRoute
+                  path={route.url}
+                  key={route.url}
+                  component={route.page}
+                />
+              ) : (
+                <Route path={route.url} key={route.url}>
+                  <route.page />
+                </Route>
+              )
+            )}
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>

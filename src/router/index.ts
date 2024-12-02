@@ -19,72 +19,86 @@ export const routes: Array<Route> = [
     {
         title: "Pagina Principal",
         url: Routes.PRINCIPAL,
-        page: Principal
+        page: Principal,
+        requiresAuth: false
     },
     {
         title: "Acceso",
         url: Routes.ACCESO,
-        page: Acceso
+        page: Acceso,
+        requiresAuth: false
     },
     {
         title: "Inscripción",
         url: Routes.INSCRIPCION,
-        page: Inscripcion
+        page: Inscripcion,
+        requiresAuth: false
     },
     {
         title: "Recuperación de Cuenta",
         url: Routes.RECUPERACION,
-        page: Recuperacion
+        page: Recuperacion,
+        requiresAuth: false
     },
     {
         title: "Menu Principal",
         url: Routes.MENU,
-        page: Menu
+        page: Menu,
+        requiresAuth: true
     },
     {
         title: "Noticias",
         url: Routes.NOTICIAS,
-        page: Noticias
+        page: Noticias,
+        requiresAuth: true
     },
     {
         title: "Mis Materias",
         url: Routes.MATERIAS,
-        page: Materias
+        page: Materias,
+        requiresAuth: true
     },
     {
         title: "Preselección",
         url: Routes.PRESELECCION,
-        page: Preseleccion
+        page: Preseleccion,
+        requiresAuth: true
     },
     {
         title: "Deudas",
         url: Routes.DEUDA,
-        page: Deudas
+        page: Deudas,
+        requiresAuth: true
     },
     {
         title: "Solicitudes",
         url: Routes.SOLICITUDES,
-        page: Solicitudes
+        page: Solicitudes,
+        requiresAuth: true
     },
     {
         title: "Mis Tareas",
         url: Routes.TAREAS,
-        page: Tareas
+        page: Tareas,
+        requiresAuth: true
     },
     {
         title: "Eventos",
         url: Routes.EVENTOS,
-        page: Eventos
+        page: Eventos,
+        requiresAuth: true
     },
     {
         title: "Videos",
         url: Routes.VIDEOS,
-        page: Videos
+        page: Videos,
+        requiresAuth: true
     },
     {
         title: "Acerda De",
         url: Routes.ACERCA,
-        page: Acerca
+        page: Acerca,
+        requiresAuth: true
     },
     {
         title: "Salir",
