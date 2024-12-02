@@ -1,4 +1,4 @@
-import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact, useIonRouter } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import Menu from './components/menu/Menu';
@@ -38,6 +38,10 @@ import { Routes } from './router/types';
 setupIonicReact();
 
 const App: React.FC = () => {
+  const router = useIonRouter();
+
+  // TODO: Check the url
+
   return (
     <IonApp>
       <IonReactRouter>

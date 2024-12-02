@@ -1,6 +1,7 @@
 import { IonButton, IonButtons, IonContent, IonHeader, IonInput, IonItem, IonList, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
 import { useState } from 'react';
 import { Routes } from '../router/types';
+import { iniciarSesion } from '../api/UASD';
 
 const Acceso: React.FC = () => {
   const router = useIonRouter();
@@ -10,12 +11,16 @@ const Acceso: React.FC = () => {
   const [contrasena, setContrasena] = useState("")
 
   const acceder = () => {
-    const nuevoUsuario = {
-      usuario,
-      contrasena
-    }
-
-    navegar()
+    iniciarSesion({
+      username: usuario,
+      password: contrasena
+    }).then((res) => {
+      if(res?.aprobado) {
+        navegar()
+      } else {
+        // Notify(res?.mensajeDeError)
+      }
+    })
   }
 
   return (
