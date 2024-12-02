@@ -1,20 +1,21 @@
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import YouTube from 'react-youtube';
+import { obtenerVideos } from '../../api/UASD';
+import { Fragment, useEffect, useState } from 'react';
 
 const Videos: React.FC = () => {
-
+  const [videos, setVideos] = useState<Array<{id: number, url: string}>>([])
+  
   const videoOptions = {
     height: '390',
     width: '100%',
   };
 
-  const videos = [
-    "E-VAoEkmVSU",
-    "MjDGx7O1Bkc",
-    "Rp5OSPhDVuM",
-    "HGw3WW-SorU",
-    "bZZWGBbYGrM"
-  ]
+  useEffect(() => {
+    obtenerVideos().then((res) => {
+     setVideos(res)
+    })
+   }, [])
 
   return (
     <IonPage>
@@ -35,10 +36,10 @@ const Videos: React.FC = () => {
         </IonHeader>
         <div className='ion-padding'>
           {videos.map(video => (
-            <>
-              <YouTube key={video} videoId={video} opts={videoOptions} />
+            <Fragment key={video.id}>
+              <YouTube videoId={video.url} opts={videoOptions} />
               <br />
-            </>
+            </Fragment>
           ))}
         </div>
       </IonContent>

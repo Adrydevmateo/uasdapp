@@ -141,3 +141,30 @@ export async function obtenerDeudas() {
         console.error('Error:', error);
     }
 }
+
+export async function obtenerVideos() {
+    try {
+        const { value: jwt } = await Preferences.get({ key: 'jwt' })
+        if(!jwt) {
+            throw new Error('User not authenticated')
+        }
+        
+        const res = await fetch('/api/videos', {
+            headers: {
+                'accept': '*/*',
+                'Authorization': jwt
+            },
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+        
+        const json = await res.json() as Array<{id: number, url: string}>
+        console.log("Data: ", json);
+        
+        return json
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
