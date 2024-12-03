@@ -16,6 +16,8 @@ import {
 } from "@ionic/react";
 import AdryPic from "../../assets/profile.jpg";
 import EngelPic from "../../assets/Engel.jpg";
+import ErikPic from "../../assets/erik.jpg";
+import FrankPic from "../../assets/frank.jpeg";
 
 interface Desarrollador {
   id: string;
@@ -38,16 +40,16 @@ const Acerca: React.FC = () => {
     {
       id: crypto.randomUUID(),
       nombre: "Erik Risland Perdomo",
-      foto: "",
-      mensaje: "",
-      matricula: "",
+      foto: ErikPic,
+      mensaje: "Desarrollador Full-Stack orientado más a Programación Web en .NET, me enfoco más en aprender todo lo posible para ser de ayuda en más ramas de la programación",
+      matricula: "2023-0595",
     },
     {
       id: crypto.randomUUID(),
       nombre: "Frank Lafontaine Peralta",
-      foto: "",
-      mensaje: "",
-      matricula: "",
+      foto: FrankPic,
+      mensaje: "Soy un desarrollador de software junior apasionado por la tecnología y el aprendizaje continuo. Tengo experiencia en programación y desarrollo de aplicaciones, y me especializo en implementar soluciones eficientes siguiendo buenas prácticas.",
+      matricula: "2023-0675",
     },
     {
       id: crypto.randomUUID(),
@@ -62,7 +64,7 @@ const Acerca: React.FC = () => {
       foto: AdryPic,
       mensaje:
         "Desarrollador web orientado a soluciones con años de experiencia entregando proyectos de alto impacto, con una capacidad para cultivar relaciones sólidas que mejoran la colaboración y respaldan objetivos estratégicos. Altamente adaptable en entornos dinámicos, aprovechando excelentes habilidades de comunicación para asegurar la alineación del equipo y lograr el éxito de los proyectos.",
-      matricula: "2017 - 5331",
+      matricula: "2017-5331",
     },
   ];
 
