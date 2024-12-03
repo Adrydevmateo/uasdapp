@@ -1,11 +1,10 @@
 export interface Usuario {
-    id: number,
+    id?: number,
     nombre: string,
     apellido: string,
     username: string,
     password: string,
     email: string,
-    authToken: string
 }
 
 export interface Evento {

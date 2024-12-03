@@ -4,8 +4,8 @@ import { APIRes, CrearUsuarioRes, Deuda, Evento, IniciarSesionData, IniciarSesio
 const url = "https://uasdapi.ia3x.com"
 
 // Headers { accept: "*/*", Authorization: token, "Content-Type": "application/json" }
-function crearUsuario(usuario: Usuario) {
-    fetch(url, {
+export function crearUsuario(usuario: Usuario) {
+    fetch("/api/crear_usuario", {
         method: "POST",
         headers: {
             accept: "*/*",
@@ -13,13 +13,13 @@ function crearUsuario(usuario: Usuario) {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            id: usuario.id,
+            id: Math.floor(Math.random() * 10000),
             nombre: usuario.nombre,
             apellido: usuario.apellido,
             username: usuario.username,
             password: usuario.password,
             email: usuario.email,
-            authToken: usuario.authToken
+            authToken: `jEdXqPe0xY0P8DVRzEg99wVU5IHKhFRXovhsicDqxIlzBk7PWaRwFVvPkttsC2qy${crypto.randomUUID()}`
         })
     })
         .then((res) => res.json())
