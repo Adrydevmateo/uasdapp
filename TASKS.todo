@@ -53,13 +53,9 @@
     [x] - Lista de solicitudes realizadas | Los elementos de la lista contienen:
         [x] - Estado actual de la solicitud
         [x] - Respuesta de la solicitud
-    [] - Notificaciones sobre el cambio del estado de las solicitudes
-[] - Sección 6 | Mis Tareas
-    [] - Recordatorios para tareas próximas a vencer | Los recordatorios contienen:
-        [] - Nombre de la tarea
-        [] - Fecha de finalización de entrega
-        [] - Asignatura
-    [] - Enlace al aula virtual (por ejemplo, Moodle o plataforma designada)
+[x] - Sección 6 | Mis Tareas
+        [x] - Nombre de la tarea
+        [x] - Fecha de finalización de entrega
 [x] - Sección 7 | Eventos
     [x] - Lista de eventos de la UASD | Los elementos de la lista contienen:
         [x] - Fecha del evento
