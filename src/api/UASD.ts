@@ -28,6 +28,42 @@ export function crearUsuario(usuario: Usuario) {
         })
 }
 
+export async function cambiarContrasena({usuario, email}) {
+    try {
+        const { value: jwt } = await Preferences.get({ key: 'jwt' })
+        if (!jwt) {
+            throw new Error('User not authenticated')
+        }
+
+        const res = await fetch('/api/reset_password', {
+            method: "POST",
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'application/json',
+                'Authorization': jwt
+            },
+            body: JSON.stringify({
+                usuario,
+                email
+            }),
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+
+        const json = await res.json()
+        console.log("@@ Res: ", json);
+
+        return {
+            aprobado: json.success,
+            msg: json.message 
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
 export async function iniciarSesion(usuario: Pick<Usuario, "username" | "password">) {
     try {
         const res = await fetch('/api/login', {
