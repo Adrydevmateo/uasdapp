@@ -322,3 +322,91 @@ export async function obtenerPreseleccion() {
         console.error('Error:', error);
     }
 }
+
+export async function obtenerTareas() {
+    try {
+        const { value: jwt } = await Preferences.get({ key: 'jwt' })
+        if (!jwt) {
+            throw new Error('User not authenticated')
+        }
+
+        const res = await fetch('/api/tareas', {
+            headers: {
+                'accept': '*/*',
+                'Authorization': jwt
+            },
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+
+        const json = await res.json()
+        console.log("Obtener Tareas: ", json);
+
+        return json
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function crearSolicitud({tipo, descripcion}) {
+    try {
+        const { value: jwt } = await Preferences.get({ key: 'jwt' })
+        if (!jwt) {
+            throw new Error('User not authenticated')
+        }
+
+        const res = await fetch('/api/crear_solicitud', {
+            method: "POST",
+            headers: {
+                'accept': '*/*',
+                'Content-Type': 'application/json',
+                'Authorization': jwt
+            },
+            body: JSON.stringify({
+                tipo,
+                descripcion
+            }),
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+
+        const json = await res.json()
+
+        return {
+            aprobado: json.success,
+            msg: json.message
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}
+
+export async function obtenerSolicitudes() {
+    try {
+        const { value: jwt } = await Preferences.get({ key: 'jwt' })
+        if (!jwt) {
+            throw new Error('User not authenticated')
+        }
+
+        const res = await fetch('/api/mis_solicitudes', {
+            headers: {
+                'accept': '*/*',
+                'Authorization': jwt
+            },
+        })
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! Status: ${res.status}`)
+        }
+
+        const json = await res.json()
+
+        return json.data
+    } catch (error) {
+        console.error('Error:', error);
+    }
+}

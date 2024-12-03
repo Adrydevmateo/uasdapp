@@ -46,6 +46,15 @@ export interface APIRes<T> {
     data: T
 }
 
+export interface Tarea  {
+    "id": number,
+    "usuarioId": number,
+    "titulo": string,
+    "descripcion": string,
+    "fechaVencimiento": string,
+    "completada": boolean
+  }
+
 export interface IniciarSesionData {
     id: 0,
     nombre: string,

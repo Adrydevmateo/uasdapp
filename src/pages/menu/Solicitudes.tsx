@@ -1,62 +1,66 @@
-import { IonButton, IonButtons, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCheckbox, IonContent, IonHeader, IonInput, IonMenuButton, IonPage, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
-import { useState } from 'react';
+import { IonAlert, IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCheckbox, IonContent, IonHeader, IonInput, IonMenuButton, IonPage, IonSelect, IonSelectOption, IonTitle, IonToolbar } from '@ionic/react';
+import { useEffect, useState } from 'react';
+import { crearSolicitud, obtenerSolicitudes } from '../../api/UASD';
 
-type Estado = "pendiente" | "en proceso" | "aprobada" | "rechazada"
+type Estado = "Pendiente" | "Aprobada" | "Cancelada"
 
 interface Solicitud {
-  id: string,
-  nombre: string,
-  estado: Estado,
-  respuesta: string
+  "id": number,
+  "usuarioId": number,
+  "tipo": string,
+  "descripcion": string,
+  "estado": Estado,
+  "fechaSolicitud": string,
+  "fechaRespuesta": null | string,
+  "respuesta": null | string
 }
 
 const Solicitudes: React.FC = () => {
-  const [nuevaSolicitud, setNuevaSolicitud] = useState<Solicitud>({
-    id: crypto.randomUUID(),
-    nombre: "Nombre de la solicitud",
-    estado: "pendiente",
-    respuesta: ""
-  })
+
+  const [nuevaSolicitud, setNuevaSolicitud] = useState("")
+  const [isOpen, setIsOpen] = useState(false);
+  const [msg, setMsg] = useState("");
+
+  const tiposDeSolicitud = [
+    {
+      "codigo": "beca",
+      "descripcion": "Solicitud de beca"
+    },
+    {
+      "codigo": "carta_estudio",
+      "descripcion": "Carta de estudios"
+    },
+    {
+      "codigo": "record_nota",
+      "descripcion": "Record de nota"
+    }
+  ]
 
   const solicitar = () => {
+    const encontrada = tiposDeSolicitud.find(f => f.codigo == nuevaSolicitud)
+    crearSolicitud({ tipo: encontrada?.codigo, descripcion: encontrada?.descripcion }).then(res => {
+      if (res?.aprobado) {
+        setMsg(res.msg)
+        setIsOpen(true)
+      }
+    })
 
   }
 
-  const [solicitudes, setSolicitudes] = useState<Array<Solicitud>>([
-    {
-      id: crypto.randomUUID(),
-      nombre: "Nombre de la solicitud",
-      estado: "aprobada",
-      respuesta: "Repuesta"
-    },
-    {
-      id: crypto.randomUUID(),
-      nombre: "Nombre de la solicitud",
-      estado: "en proceso",
-      respuesta: "Repuesta"
-    },
-    {
-      id: crypto.randomUUID(),
-      nombre: "Nombre de la solicitud",
-      estado: "pendiente",
-      respuesta: "Repuesta"
-    },
-    {
-      id: crypto.randomUUID(),
-      nombre: "Nombre de la solicitud",
-      estado: "rechazada",
-      respuesta: "Repuesta"
-    }
-  ])
+  const [solicitudes, setSolicitudes] = useState<Array<Solicitud>>([])
+
+  useEffect(() => {
+    obtenerSolicitudes().then((res) => {
+      setSolicitudes(res)
+    })
+  }, [msg])
 
   const obtenerColorDeBorde = (estado: Estado) => {
     type IonicColor = "--ion-color-warning" | "--ion-color-success" | "--ion-color-primary-shade" | "--ion-color-danger"
     let color: IonicColor = "--ion-color-primary-shade"
-    if (estado == "en proceso") {
-      color = "--ion-color-warning"
-    } else if (estado == "aprobada") {
+    if (estado == "Aprobada") {
       color = "--ion-color-success"
-    } else if (estado == "pendiente") {
+    } else if (estado == "Pendiente") {
       color = "--ion-color-primary-shade"
     } else {
       color = "--ion-color-danger"
@@ -83,8 +87,21 @@ const Solicitudes: React.FC = () => {
         </IonHeader>
         <div className='ion-padding'>
           <div>
-            <IonInput label="Crear solicitud" placeholder="Ingresa tu solicitud" onInput={({target}) => setNuevaSolicitud(target.value)}></IonInput>
+            <IonSelect label="Tipo de solicitud"
+              onIonChange={(e) => setNuevaSolicitud(e.detail.value)}
+            >
+              {tiposDeSolicitud.map(solicitud => (
+                <IonSelectOption key={solicitud.codigo} value={solicitud.codigo}>{solicitud.descripcion}</IonSelectOption>
+              ))}
+            </IonSelect>
             <IonButton onClick={solicitar} expand='full'>Solicitar</IonButton>
+            <IonAlert
+              isOpen={isOpen}
+              header="Éxito"
+              message={msg}
+              buttons={['Gracias']}
+              onDidDismiss={() => setIsOpen(false)}
+            ></IonAlert>
           </div>
 
           <br />
@@ -93,9 +110,10 @@ const Solicitudes: React.FC = () => {
             {solicitudes.map(solicitud => (
               <IonCard className='ion-padding' key={solicitud.id} style={{ borderWidth: "1px", borderStyle: "solid", borderColor: `var(${obtenerColorDeBorde(solicitud.estado)})` }}>
                 <IonCardHeader>
+                  <IonCardSubtitle>{new Date(solicitud.fechaSolicitud).toLocaleDateString()}</IonCardSubtitle>
                   <IonCardTitle style={{ textTransform: "capitalize" }}>{solicitud.estado}</IonCardTitle>
-                  <IonCardSubtitle>{solicitud.respuesta}</IonCardSubtitle>
                 </IonCardHeader>
+                <IonCardContent>{solicitud.descripcion}</IonCardContent>
               </IonCard>
             ))}
           </div>

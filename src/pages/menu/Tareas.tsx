@@ -1,6 +1,17 @@
-import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { useEffect, useState } from 'react';
+import { Tarea } from '../../api/types';
+import { obtenerTareas } from '../../api/UASD';
 
 const Tareas: React.FC = () => {
+
+  const [tareas, setTareas] = useState<Array<Tarea>>([])
+
+  useEffect(() => {
+    obtenerTareas().then(res => {
+      setTareas(res)
+    })
+  }, [])
 
   return (
     <IonPage>
@@ -20,7 +31,17 @@ const Tareas: React.FC = () => {
           </IonToolbar>
         </IonHeader>
         <div className='ion-padding'>
-          <h1>Tareas</h1>
+          {tareas.map(tarea => (
+            <IonCard key={tarea.id}>
+            <IonCardHeader>
+              <IonCardSubtitle>Fecha limite: {new Date(tarea.fechaVencimiento).toLocaleDateString()}</IonCardSubtitle>
+              <IonCardTitle>{tarea.titulo}</IonCardTitle>
+              <IonCardSubtitle>{tarea.completada ? "Completada" : "Pendiente"}</IonCardSubtitle>
+            </IonCardHeader>
+      
+            <IonCardContent>{tarea.descripcion}</IonCardContent>
+          </IonCard>
+          ))}
         </div>
       </IonContent>
     </IonPage>
