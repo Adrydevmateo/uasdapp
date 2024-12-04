@@ -5,7 +5,7 @@ import { iniciarSesion } from '../api/UASD';
 
 const Acceso: React.FC = () => {
   const router = useIonRouter();
-  const navegar = () => router.push(Routes.MENU)
+  // const navegar = () => router.push(Routes.MENU)
 
   const [usuario, setUsuario] = useState("")
   const [contrasena, setContrasena] = useState("")
@@ -16,9 +16,9 @@ const Acceso: React.FC = () => {
       password: contrasena
     }).then((res) => {
       if(res?.aprobado) {
-        navegar()
+        location.href = Routes.MENU
       } else {
-        // Notify(res?.mensajeDeError)
+        
       }
     })
   }
