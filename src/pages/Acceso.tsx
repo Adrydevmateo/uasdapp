@@ -1,12 +1,11 @@
-import { IonButton, IonButtons, IonContent, IonHeader, IonInput, IonItem, IonList, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
+import { IonAlert, IonButton, IonButtons, IonContent, IonHeader, IonInput, IonItem, IonList, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
 import { useState } from 'react';
 import { Routes } from '../router/types';
 import { iniciarSesion } from '../api/UASD';
 
 const Acceso: React.FC = () => {
-  const router = useIonRouter();
-  // const navegar = () => router.push(Routes.MENU)
-
+  
+  const [isOpen, setIsOpen] = useState(false);
   const [usuario, setUsuario] = useState("")
   const [contrasena, setContrasena] = useState("")
 
@@ -18,7 +17,7 @@ const Acceso: React.FC = () => {
       if(res?.aprobado) {
         location.href = Routes.MENU
       } else {
-        
+        setIsOpen(true)
       }
     })
   }
@@ -56,6 +55,13 @@ const Acceso: React.FC = () => {
           </IonList>
           <IonButton onClick={acceder} expand='full'>Acceder</IonButton>
         </div>
+        <IonAlert
+        isOpen={isOpen}
+        header="Usuario o contraseña incorrecta"
+        buttons={['Cerrar']}
+        onDidDismiss={() => setIsOpen(false)}
+      ></IonAlert>
+
       </IonContent>
     </IonPage>
   );
