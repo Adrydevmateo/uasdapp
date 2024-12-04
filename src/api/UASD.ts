@@ -5,7 +5,7 @@ const url = "https://uasdapi.ia3x.com"
 
 // Headers { accept: "*/*", Authorization: token, "Content-Type": "application/json" }
 export function crearUsuario(usuario: Usuario) {
-    fetch("/api/crear_usuario", {
+    fetch("https://uasdapi.ia3x.com/crear_usuario", {
         method: "POST",
         headers: {
             accept: "*/*",
@@ -35,7 +35,7 @@ export async function cambiarContrasena({usuario, email}) {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/reset_password', {
+        const res = await fetch('https://uasdapi.ia3x.com/reset_password', {
             method: "POST",
             headers: {
                 'accept': '*/*',
@@ -66,7 +66,8 @@ export async function cambiarContrasena({usuario, email}) {
 
 export async function iniciarSesion(usuario: Pick<Usuario, "username" | "password">) {
     try {
-        const res = await fetch('/api/login', {
+        // https://uasdapi.ia3x.com/login
+        const res = await fetch('https://uasdapi.ia3x.com/login', {
             method: "POST",
             headers: {
                 'accept': '*/*',
@@ -88,6 +89,8 @@ export async function iniciarSesion(usuario: Pick<Usuario, "username" | "passwor
             await Preferences.set({ key: 'jwt', value: json.data.authToken });
         }
 
+        console.log("@@ Data: ", json);
+
         return {
             aprobado: json.success,
             mensajeDeError: json.error
@@ -104,7 +107,7 @@ export async function obtenerNoticias() {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/noticias', {
+        const res = await fetch('https://uasdapi.ia3x.com/noticias', {
             headers: {
                 'accept': '*/*',
                 'Authorization': jwt
@@ -131,7 +134,7 @@ export async function obtenerEventos() {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/eventos', {
+        const res = await fetch('https://uasdapi.ia3x.com/eventos', {
             headers: {
                 'accept': '*/*',
                 'Authorization': jwt
@@ -158,7 +161,7 @@ export async function obtenerDeudas() {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/deudas', {
+        const res = await fetch('https://uasdapi.ia3x.com/deudas', {
             headers: {
                 'accept': '*/*',
                 'Authorization': jwt
@@ -185,7 +188,7 @@ export async function obtenerVideos() {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/videos', {
+        const res = await fetch('https://uasdapi.ia3x.com/videos', {
             headers: {
                 'accept': '*/*',
                 'Authorization': jwt
@@ -212,7 +215,7 @@ export async function obtenerMaterias() {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/materias_disponibles', {
+        const res = await fetch('https://uasdapi.ia3x.com/materias_disponibles', {
             headers: {
                 'accept': '*/*',
                 'Authorization': jwt
@@ -239,7 +242,7 @@ export async function preseleccionarMateria(codigo: string) {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/preseleccionar_materia', {
+        const res = await fetch('https://uasdapi.ia3x.com/preseleccionar_materia', {
             method: "POST",
             headers: {
                 'accept': '*/*',
@@ -271,7 +274,7 @@ export async function cancelarPreseleccionMateria(codigo: string) {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/cancelar_preseleccion_materia', {
+        const res = await fetch('https://uasdapi.ia3x.com/cancelar_preseleccion_materia', {
             method: "POST",
             headers: {
                 'accept': '*/*',
@@ -303,7 +306,7 @@ export async function obtenerPreseleccion() {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/ver_preseleccion', {
+        const res = await fetch('https://uasdapi.ia3x.com/ver_preseleccion', {
             headers: {
                 'accept': '*/*',
                 'Authorization': jwt
@@ -330,7 +333,7 @@ export async function obtenerTareas() {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/tareas', {
+        const res = await fetch('https://uasdapi.ia3x.com/tareas', {
             headers: {
                 'accept': '*/*',
                 'Authorization': jwt
@@ -357,7 +360,7 @@ export async function crearSolicitud({tipo, descripcion}) {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/crear_solicitud', {
+        const res = await fetch('https://uasdapi.ia3x.com/crear_solicitud', {
             method: "POST",
             headers: {
                 'accept': '*/*',
@@ -392,7 +395,7 @@ export async function obtenerSolicitudes() {
             throw new Error('User not authenticated')
         }
 
-        const res = await fetch('/api/mis_solicitudes', {
+        const res = await fetch('https://uasdapi.ia3x.com/mis_solicitudes', {
             headers: {
                 'accept': '*/*',
                 'Authorization': jwt

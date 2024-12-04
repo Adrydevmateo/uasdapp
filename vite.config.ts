@@ -15,13 +15,13 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: './src/setupTests.ts',
   },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'https://uasdapi.ia3x.com',
-        changeOrigin: true, // This is needed for virtual hosts and cross-origin requests
-        rewrite: (path) => path.replace(/^\/api/, ''), // Rewrite path, optional
-      },
-    },
-  },
+  // server: {
+  //   proxy: {
+  //     '/api': {
+  //       target: 'https://uasdapi.ia3x.com',
+  //       changeOrigin: true, // This is needed for virtual hosts and cross-origin requests
+  //       rewrite: (path) => path.replace(/^\/api/, ''), // Rewrite path, optional
+  //     },
+  //   },
+  // },
 })
