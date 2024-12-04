@@ -1,14 +1,16 @@
 import { IonButton, IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonRouter } from '@ionic/react';
 import { Routes } from '../../router/types';
+import { Preferences } from '@capacitor/preferences';
 
 const Salir: React.FC = () => {
 
   const router = useIonRouter();
   const navegar = () => router.push(Routes.ACCESO)
   
-  const salir = () => {
-    
-    navegar()
+  const salir = async () => {
+    await Preferences.remove({ key: 'jwt' });
+
+    location.href = "/acceso"
   }
 
   return (
